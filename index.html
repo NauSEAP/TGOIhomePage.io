@@ -43,114 +43,65 @@
 .protyle-wysiwyg [data-node-id] {}
 .protyle-gutters button svg {height:26px}
 .b3-typography:not(.b3-typography--default), .protyle-wysiwyg, .protyle-title {font-family: "Emojis Additional", "Emojis Reset", "Times New Roman", var(--b3-font-family)}
-        
+/* --- 故障字体特效开始 --- */
+.glitch-container {
+    position: relative;
+    color: #ff8c5e; 
+    font-family: "Courier New", "Consolas", monospace; 
+    font-size: 60px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    display: block; /* 改为 block 方便在思源文档中布局 */
+    text-align: center;
+    transform: scaleX(1.3) scaleY(0.8); 
+    margin: 20px 0;
+}
+.glitch-text {
+    position: relative;
+    text-shadow: 0 0 10px rgba(255, 140, 94, 0.8), 0 0 20px rgba(255, 140, 94, 0.5);
+    z-index: 1;
+}
+.glitch-text::before, .glitch-text::after {
+    content: attr(data-text);
+    position: absolute;
+    left: 0; top: 0; width: 100%;
+    background: var(--b3-theme-background); /* 自动适配思源背景色 */
+    overflow: hidden;
+}
+.glitch-text::before {
+    left: -2px; text-shadow: 2px 0 #ff0000;
+    clip: rect(0, 900px, 0, 0);
+    animation: glitch-anim 3s infinite linear alternate-reverse;
+}
+.glitch-text::after {
+    left: 2px; text-shadow: -2px 0 #00ffff;
+    clip: rect(0, 900px, 0, 0);
+    animation: glitch-anim-2 2s infinite linear alternate-reverse;
+}
+@keyframes glitch-anim {
+    0% { clip: rect(10px, 9999px, 20px, 0); }
+    100% { clip: rect(70px, 9999px, 80px, 0); }
+}
+@keyframes glitch-anim-2 {
+    0% { clip: rect(30px, 9999px, 40px, 0); }
+    100% { clip: rect(90px, 9999px, 100px, 0); }
+}
+/* --- 故障字体特效结束 --- */
     </style>
     
 </head>
 <body>
 <div class="protyle-wysiwyg protyle-wysiwyg--attr" 
 style="max-width: 800px;margin: 0 auto;" 
-id="preview"><div data-node-id="20251231050418-dvu8gmf" data-type="NodeParagraph" class="p"><div contenteditable="false" spellcheck="false"><span contenteditable="false" data-type="img" class="img"><span> </span><span><span class="protyle-action protyle-icons"><span class="protyle-icon protyle-icon--only"><svg class="svg"><use xlink:href="#iconMore"></use></svg></span></span><img src="assets/020bc0f86f3aaf308629a1ecb51743d2-20250810171931-8ajalnl.gif" data-src="assets/020bc0f86f3aaf308629a1ecb51743d2-20250810171931-8ajalnl.gif" alt="image" /><span class="protyle-action__drag"></span><span class="protyle-action__title"><span></span></span></span><span> </span></span></div><div class="protyle-attr" contenteditable="false"></div></div><div data-subtype="h1" data-node-id="20250807020754-ah3qdsw" data-type="NodeHeading" class="h1" id="20250807020754-ah3qdsw" title="大概是wiki吧" title-img="background-image:url(&amp;quot;assets/020bc0f86f3aaf308629a1ecb51743d2-20250810171931-8ajalnl.gif&amp;quot;);object-position:" updated="20251231041506"><div contenteditable="false" spellcheck="false">大概是wiki吧</div><div class="protyle-attr" contenteditable="false"></div></div><div data-node-id="20251231040549-xo3m6mk" data-type="NodeHTMLBlock" class="render-node" id="20251231040549-xo3m6mk" style="text-align: center;" updated="20251231041506" data-subtype="block"><div><protyle-html data-content="&lt;div&gt;
-&lt;!DOCTYPE html&gt;
-&lt;html lang=&quot;zh&quot;&gt;
-&lt;head&gt;
-    &lt;meta charset=&quot;UTF-8&quot;&gt;
-    &lt;style&gt;
-        body {
-            background-color: #1a1a1a; /* 深色背景 */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            overflow: hidden;
-        }
-        .glitch-container {
-    position: relative;
-    color: #ff8c5e; 
-    font-family: &quot;Courier New&quot;, &quot;Consolas&quot;, &quot;Liberation Mono&quot;, monospace; 
-    font-size: 60px;
-    font-weight: bold;
-    letter-spacing: 2px;
-    display: inline-block;
-    transform: scaleX(1.3) scaleY(0.8); 
-        }
-        /* 发光 */
-        .glitch-text {
-            position: relative;
-            text-shadow: 0 0 10px rgba(255, 140, 94, 0.8), 
-                         0 0 20px rgba(255, 140, 94, 0.5);
-            z-index: 1;
-        }
-        /* 故障 */
-        .glitch-text::before {
-            content: attr(data-text);
-            position: absolute;
-            left: -2px;
-            text-shadow: 2px 0 #ff0000;
-            top: 0;
-            color: #ff8c5e;
-            background: #1a1a1a;
-            overflow: hidden;
-            clip: rect(0, 900px, 0, 0);
-            animation: glitch-anim 3s infinite linear alternate-reverse;
-        }
-        /* 故障蓝色 */
-        .glitch-text::after {
-            content: attr(data-text);
-            position: absolute;
-            left: 2px;
-            text-shadow: -2px 0 #00ffff;
-            top: 0;
-            color: #ff8c5e;
-            background: #1a1a1a;
-            overflow: hidden;
-            clip: rect(0, 900px, 0, 0);
-            animation: glitch-anim-2 2s infinite linear alternate-reverse;
-        }
-        /* 扫描线 */
-        .glitch-container::after {
-            content: &quot;&quot;;
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: repeating-linear-gradient(
-                0deg,
-                rgba(0, 0, 0, 0.1),
-                rgba(0, 0, 0, 0.1) 1px,
-                transparent 1px,
-                transparent 2px
-            );
-            pointer-events: none;
-            z-index: 2;
-        }
-        /* 跳动 */
-        @keyframes glitch-anim {
-            0% { clip: rect(10px, 9999px, 20px, 0); }
-            10% { clip: rect(40px, 9999px, 50px, 0); }
-            20% { clip: rect(80px, 9999px, 5px, 0); }
-            30% { clip: rect(20px, 9999px, 60px, 0); }
-            100% { clip: rect(70px, 9999px, 80px, 0); }
-        }
-        @keyframes glitch-anim-2 {
-            0% { clip: rect(30px, 9999px, 40px, 0); }
-            20% { clip: rect(10px, 9999px, 30px, 0); }
-            50% { clip: rect(60px, 9999px, 70px, 0); }
-            80% { clip: rect(40px, 9999px, 10px, 0); }
-            100% { clip: rect(90px, 9999px, 100px, 0); }
-        }
-    &lt;/style&gt;
-&lt;/head&gt;
-&lt;body&gt;
-    &lt;div class=&quot;glitch-container&quot;&gt;
-        &lt;div class=&quot;glitch-text&quot; data-text=&quot;却尚未消除伦理的争端&quot; style=&quot;font-size: 23px;&quot;&gt;技术高度发达，&lt;/div&gt;
-        &lt;div class=&quot;glitch-text&quot; data-text=&quot;人人相连的世界观下的故事。&quot; style=&quot;font-size: 23px;&quot;&gt;人与人、神经网络之间的边界已然消亡.....&lt;/div&gt;
-    &lt;/div&gt;
-&lt;/body&gt;
-&lt;/html&gt;
-&lt;/div&gt;"></protyle-html><span style="position: absolute">​</span></div><div class="protyle-attr" contenteditable="false"></div></div><div data-subtype="h1" data-node-id="20250810172411-vqsfi9f" data-type="NodeHeading" class="h1" id="20250810172411-vqsfi9f" updated="20251231044040"><div contenteditable="false" spellcheck="false"></div><div class="protyle-attr" contenteditable="false"></div></div><div data-node-id="20250810180223-r33jxp4" data-type="NodeCodeBlock" class="render-node" updated="20251231044040" id="20250810180223-r33jxp4" data-content="%%{init: {'theme': 'dark'}}%%
+id="preview">
+<div data-node-id="20251231050418-dvu8gmf" data-type="NodeParagraph" class="p"><div contenteditable="false" spellcheck="false"><span contenteditable="false" data-type="img" class="img"><span> </span><span><span class="protyle-action protyle-icons"><span class="protyle-icon protyle-icon--only"><svg class="svg"><use xlink:href="#iconMore"></use></svg></span></span><img src="assets/020bc0f86f3aaf308629a1ecb51743d2-20250810171931-8ajalnl.gif" data-src="assets/020bc0f86f3aaf308629a1ecb51743d2-20250810171931-8ajalnl.gif" alt="image" /><span class="protyle-action__drag"></span><span class="protyle-action__title"><span></span></span></span><span> </span></span></div><div class="protyle-attr" contenteditable="false"></div></div><div data-subtype="h1" data-node-id="20250807020754-ah3qdsw" data-type="NodeHeading" class="h1" id="20250807020754-ah3qdsw" title="大概是wiki吧" title-img="background-image:url(&amp;quot;assets/020bc0f86f3aaf308629a1ecb51743d2-20250810171931-8ajalnl.gif&amp;quot;);object-position:" updated="20251231041506"><div contenteditable="false" spellcheck="false">大概是wiki吧</div><div class="protyle-attr" contenteditable="false"></div></div><div data-node-id="20251231040549-xo3m6mk" data-type="NodeHTMLBlock" class="render-node" id="20251231040549-xo3m6mk" style="text-align: center;" updated="20251231041506" data-subtype="block"><div><protyle-html data-content="
+  <div data-node-id="20251231040549-xo3m6mk" class="render-node">
+    <div class="glitch-container">
+      <div class="glitch-text" data-text="技术高度发达，">技术高度发达，</div>
+      <div class="glitch-text" data-text="人与人、神经网络之间的边界已然消亡....." style="font-size: 23px;">人与人、神经网络之间的边界已然消亡.....</div>
+      <div class="glitch-text" data-text="却尚未消除伦理的争端" style="font-size: 23px;">却尚未消除伦理的争端</div>
+  </div>
+</protyle-html><span style="position: absolute">​</span></div><div class="protyle-attr" contenteditable="false"></div></div><div data-subtype="h1" data-node-id="20250810172411-vqsfi9f" data-type="NodeHeading" class="h1" id="20250810172411-vqsfi9f" updated="20251231044040"><div contenteditable="false" spellcheck="false"></div><div class="protyle-attr" contenteditable="false"></div></div><div data-node-id="20250810180223-r33jxp4" data-type="NodeCodeBlock" class="render-node" updated="20251231044040" id="20250810180223-r33jxp4" data-content="%%{init: {'theme': 'dark'}}%%
 mindmap
   root((文档目录))
     🌱 种族、势力、组织
